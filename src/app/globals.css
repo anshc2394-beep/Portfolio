@@ -133,7 +133,7 @@ a:hover {
   color: var(--accent);
 }
 .header-note {
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: 0.07em;
   color: var(--muted);
 }
@@ -169,7 +169,7 @@ a:hover {
   align-items: center;
 }
 .availability {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.025em;
 }
 .status-dot {
@@ -206,7 +206,7 @@ a:hover {
   display: flex;
   align-items: flex-start;
   gap: 25px;
-  font: 11px/1.9 var(--mono);
+  font: 12px/1.9 var(--mono);
   letter-spacing: 0.025em;
   padding-top: 14px;
 }
@@ -269,7 +269,7 @@ a:hover {
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: 0.07em;
   color: var(--muted);
 }
@@ -315,7 +315,7 @@ a:hover {
 }
 .visual-topline,
 .visual-bottomline {
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: 0.06em;
   display: flex;
   justify-content: space-between;
@@ -345,7 +345,7 @@ a:hover {
   padding-top: 28px;
 }
 .project-info .eyebrow {
-  font-size: 11px;
+  font-size: 12px;
 }
 .project-year {
   margin-left: 18px;
@@ -366,7 +366,7 @@ a:hover {
   gap: 8px 18px;
   flex-wrap: wrap;
   margin: 20px 0 12px;
-  font: 11px/1.8 var(--mono);
+  font: 12px/1.8 var(--mono);
 }
 .project-actions {
   display: flex;
@@ -399,7 +399,7 @@ a:hover {
 }
 .detail-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 42px;
   padding: 12px 0 30px;
 }
@@ -467,7 +467,7 @@ a:hover {
   border-bottom: 1px solid var(--line);
 }
 .job-date {
-  font: 11px/1.7 var(--mono);
+  font: 12px/1.7 var(--mono);
   padding-top: 5px;
   color: var(--muted);
 }
@@ -486,7 +486,7 @@ a:hover {
 }
 .job-description > span {
   display: block;
-  font: 10px/1.8 var(--mono);
+  font: 12px/1.8 var(--mono);
   margin-top: 16px;
   color: var(--muted);
 }
@@ -520,7 +520,7 @@ a:hover {
   margin-top: 35px;
 }
 .education .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .education h4 {
@@ -591,7 +591,7 @@ a:hover {
 }
 .activity-note > .eyebrow {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .activity-note > div {
   display: flex;
@@ -601,7 +601,7 @@ a:hover {
   padding: 16px 0;
 }
 .activity-note > div > span {
-  font: 11px var(--mono);
+  font: 12px var(--mono);
   color: var(--muted);
 }
 .activity-note h3 {
@@ -613,7 +613,7 @@ a:hover {
   position: relative;
 }
 .music-note > .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--accent);
 }
 .music-note > p {
@@ -705,7 +705,7 @@ footer {
 }
 footer > span {
   color: var(--muted);
-  font: 11px var(--mono);
+  font: 12px var(--mono);
 }
 footer > a:last-child {
   margin-left: auto;
@@ -737,7 +737,7 @@ footer > a:last-child {
   }
   .hero-coordinate {
     gap: 18px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .coordinate-mark {
     font-size: 65px;
@@ -822,10 +822,10 @@ footer > a:last-child {
     gap: 9px;
   }
   .hero-top > .eyebrow {
-    font-size: 10px;
+    font-size: 12px;
   }
   .availability {
-    font-size: 10px;
+    font-size: 12px;
   }
   .hero h1 {
     font-size: 15.1vw;
@@ -846,7 +846,7 @@ footer > a:last-child {
   }
   .hero-coordinate {
     padding-top: 0;
-    font-size: 10px;
+    font-size: 12px;
     gap: 18px;
   }
   .coordinate-mark {
@@ -868,7 +868,7 @@ footer > a:last-child {
   }
   .hero-foot {
     margin-top: 38px;
-    font-size: 9px;
+    font-size: 12px;
     gap: 20px;
   }
   .hero-foot > a {
@@ -890,7 +890,7 @@ footer > a:last-child {
     font-size: 29px;
   }
   .section-number {
-    font-size: 11px;
+    font-size: 12px;
   }
   .section-heading > p {
     margin-left: 43px;
@@ -901,7 +901,7 @@ footer > a:last-child {
   }
   .visual-topline,
   .visual-bottomline {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0;
     gap: 15px;
   }
@@ -932,14 +932,14 @@ footer > a:last-child {
     margin-left: 14px;
   }
   .project-info .eyebrow {
-    font-size: 10px;
+    font-size: 12px;
   }
   .project-description > p {
     font-size: 16px;
   }
   .technology-list {
     margin-top: 15px;
-    font-size: 10px;
+    font-size: 12px;
     gap: 6px 16px;
   }
   .project {
@@ -954,7 +954,7 @@ footer > a:last-child {
     padding: 35px 2px;
   }
   .diagram-caption {
-    font-size: 9px;
+    font-size: 12px;
   }
   .flow {
     gap: 12px;
@@ -967,7 +967,7 @@ footer > a:last-child {
     font-size: 24px;
   }
   .diagram-note {
-    font-size: 10px;
+    font-size: 12px;
   }
   .experience {
     padding-top: 15px;
@@ -978,7 +978,7 @@ footer > a:last-child {
     padding: 28px 0;
   }
   .job-date {
-    font-size: 10px;
+    font-size: 12px;
   }
   .job-title h3 {
     font-size: 25px;
@@ -990,7 +990,7 @@ footer > a:last-child {
     font-size: 15px;
   }
   .job-description > span {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 12px;
   }
   .about-grid {
@@ -1018,7 +1018,7 @@ footer > a:last-child {
     font-size: 16px;
   }
   .education .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
   }
   .education h4 {
     font-size: 24px;
@@ -1084,15 +1084,15 @@ footer > a:last-child {
     gap: 18px;
   }
   footer > span {
-    font-size: 9px;
+    font-size: 12px;
   }
   footer > a:last-child {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 @media (max-width: 370px) {
   .hero-foot {
-    font-size: 8px;
+    font-size: 12px;
   }
   .hero-foot > a {
     max-width: 95px;
@@ -1166,4 +1166,358 @@ body {
     min-height: 30px;
     align-items: center;
   }
+}
+/* Refinements: readable annotations, project evidence, and a personal photograph. */
+.project-netwatch-soc .project-visual {
+  background: #e7e2d9;
+  padding: 26px 44px;
+}
+.network-study {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+  padding: 50px 0 32px;
+}
+.network-question {
+  font-family: var(--display);
+  font-size: clamp(35px, 4.8vw, 70px);
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+.network-question span {
+  color: var(--accent);
+}
+.network-pipeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.network-pipeline li {
+  display: grid;
+  grid-template-columns: 28px 1fr 20px;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid #c6c0b5;
+  align-items: baseline;
+}
+.pipeline-index {
+  font: 12px var(--mono);
+  color: #a83220;
+}
+.network-pipeline strong {
+  display: block;
+  font-family: var(--display);
+  line-height: 1.1;
+  font-size: 23px;
+  letter-spacing: -0.03em;
+}
+.network-pipeline p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #5e5d55;
+}
+.network-pipeline li > span:last-child {
+  color: var(--accent);
+}
+.network-pipeline li:last-child > span:last-child {
+  visibility: hidden;
+}
+.flow-key {
+  display: flex;
+  align-items: baseline;
+  gap: 35px;
+  padding: 20px 0;
+  border-top: 1px solid #c6c0b5;
+}
+.flow-key > span {
+  font: 12px/1.6 var(--mono);
+  flex-shrink: 0;
+}
+.flow-key p {
+  font-size: 14px;
+  color: #5e5d55;
+}
+.project-netwatch-soc .visual-bottomline {
+  border-top: 1px solid #c6c0b5;
+  padding-top: 18px;
+}
+.project-takeaway {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  padding-top: 22px;
+  font-size: 16px;
+  color: var(--muted);
+}
+.project-takeaway > span {
+  color: var(--ink);
+  font: 12px/1.7 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+}
+.project-actions .text-link {
+  font-size: 16px;
+  font-weight: 600;
+}
+.contribution-list {
+  margin-top: 15px;
+}
+.contribution-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.contribution-list li + li {
+  margin-top: 10px;
+}
+.contribution-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.job-description > p {
+  color: var(--ink);
+}
+.personal-photo {
+  margin: 28px 0 0;
+  display: flex;
+  gap: 22px;
+  align-items: flex-end;
+}
+.personal-photo picture {
+  width: 210px;
+  flex-shrink: 0;
+}
+.personal-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #c4c7b8;
+}
+.personal-photo figcaption {
+  max-width: 140px;
+  font: 12px/1.7 var(--mono);
+  color: var(--muted);
+  padding-bottom: 3px;
+}
+.life-heading > p:last-of-type {
+  max-width: 420px;
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+.life-notes {
+  align-self: center;
+}
+.music-note ul {
+  margin-top: 12px;
+}
+.music-note li {
+  font-family: var(--display);
+  font-size: 24px;
+  letter-spacing: -0.035em;
+  line-height: 1.5;
+}
+.hero-coordinate {
+  line-height: 1.9;
+}
+.visual-topline,
+.visual-bottomline {
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+.header-note {
+  font-size: 11px;
+}
+.hero-foot {
+  align-items: center;
+}
+.hero-foot > a,
+footer > a:last-child {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+@media (max-width: 1100px) {
+  .project-takeaway {
+    gap: 40px;
+  }
+  .network-study {
+    gap: 30px;
+  }
+  .hero-top {
+    align-items: flex-start;
+  }
+  .hero-top .availability {
+    text-align: right;
+    max-width: 245px;
+  }
+  .personal-photo {
+    gap: 17px;
+  }
+  .personal-photo picture {
+    width: 180px;
+  }
+}
+@media (max-width: 760px) {
+  .hero-top .availability {
+    max-width: none;
+    text-align: left;
+  }
+  .hero-top > .eyebrow {
+    letter-spacing: 0.015em;
+  }
+  .hero-coordinate {
+    font-size: 12px;
+    gap: 15px;
+  }
+  .hero-foot {
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .hero-foot > span {
+    max-width: 175px;
+    line-height: 1.8;
+  }
+  .hero-foot > a {
+    max-width: 125px;
+    line-height: 1.8;
+    min-height: 44px;
+  }
+  .visual-topline,
+  .visual-bottomline {
+    font-size: 12px;
+  }
+  .visual-topline > span:last-child,
+  .visual-bottomline > span:last-child {
+    max-width: 130px;
+  }
+  .project-info .eyebrow {
+    font-size: 12px;
+  }
+  .project-year {
+    display: block;
+    margin: 5px 0 0;
+  }
+  .project-takeaway {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .project-netwatch-soc .project-visual {
+    padding: 18px 20px;
+  }
+  .project-netwatch-soc .visual-topline {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .project-netwatch-soc .visual-topline > span:last-child {
+    text-align: left;
+    max-width: none;
+  }
+  .network-study {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 30px 0;
+  }
+  .network-question {
+    font-size: 40px;
+  }
+  .network-pipeline li {
+    padding: 15px 0;
+    gap: 10px;
+    grid-template-columns: 25px 1fr 16px;
+  }
+  .network-pipeline strong {
+    font-size: 22px;
+  }
+  .network-pipeline p {
+    font-size: 14px;
+  }
+  .flow-key {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .project-netwatch-soc .visual-bottomline {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .project-netwatch-soc .visual-bottomline > span:last-child {
+    max-width: none;
+    text-align: left;
+  }
+  .diagram-note {
+    font-size: 12px;
+  }
+  .diagram-caption {
+    font-size: 12px;
+  }
+  .personal-photo {
+    margin-top: 25px;
+  }
+  .personal-photo picture {
+    width: 200px;
+  }
+  .personal-photo figcaption {
+    max-width: 150px;
+  }
+  .music-note li {
+    font-size: 24px;
+  }
+  .activity-note h3 {
+    font-size: 24px;
+  }
+  .contact-links > div {
+    font-size: 14px;
+  }
+  footer {
+    gap: 12px;
+  }
+  footer > span {
+    max-width: 185px;
+    line-height: 1.7;
+  }
+}
+@media (max-width: 430px) {
+  .personal-photo picture {
+    width: 150px;
+  }
+  .personal-photo {
+    gap: 20px;
+  }
+  .hero-coordinate {
+    font-size: 11px;
+  }
+  .hero-top .availability {
+    font-size: 11px;
+  }
+  .hero-top > .eyebrow {
+    font-size: 11px;
+  }
+  .hero-foot {
+    font-size: 11px;
+  }
+  .visual-topline,
+  .visual-bottomline {
+    font-size: 11px;
+  }
+  .visual-bottomline > span:first-child {
+    max-width: 150px;
+  }
+  .network-question {
+    font-size: 35px;
+  }
+  .project-netwatch-soc .visual-bottomline > span {
+    max-width: none;
+  }
+}
+
+.music-note > .eyebrow {
+  color: #a83220;
 }

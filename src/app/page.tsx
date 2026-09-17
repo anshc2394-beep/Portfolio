@@ -41,7 +41,7 @@ export default function Home() {
               <div>
                 BASED IN ATHENS, GEORGIA
                 <br />
-                STUDYING AT UGA · CLASS OF 2029
+                UGA · EXPECTED MAY 2029
               </div>
             </div>
             <div className="hero-intro">
@@ -63,7 +63,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-foot">
-            <span>STUDENT BY TITLE. BUILDER BY HABIT.</span>
+            <span>SOPHOMORE / UNIVERSITY OF GEORGIA</span>
             <a href="#projects">
               SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
             </a>
@@ -72,8 +72,8 @@ export default function Home() {
         <section className="section projects" id="projects">
           <SectionHeading
             number="01"
-            title="Built to figure it out."
-            note="Selected projects / 2025–2026"
+            title="Selected projects."
+            note="Software, networks & applied ML"
           />
           {projects.map((project, index) => (
             <ProjectFeature key={project.id} project={project} index={index} />

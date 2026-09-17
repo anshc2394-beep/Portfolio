@@ -31,7 +31,9 @@ Optional project demo URLs remain `null` until a verified deployment is availabl
 
 ## Assets and content
 
-The résumé was supplied by Ansh. The World Cup Path screenshot is from his public `World-Cup-Path` repository and converted to WebP. Desk Caddy's diagram is a labeled system-flow explanation, not a screenshot. No stock photography, fabricated projects, or fabricated metrics are used. Fonts are self-hosted Space Grotesk and DM Sans, licensed under the SIL Open Font License.
+The résumé and portrait were supplied by Ansh. The portrait is available as 320px and 640px WebP files. The World Cup Path screenshot is from his public `World-Cup-Path` repository and converted to WebP. NetWatch and Desk Caddy use labeled architecture diagrams, not fabricated screenshots. No stock photography, fabricated projects, or fabricated metrics are used. Fonts are self-hosted Space Grotesk and DM Sans, licensed under the SIL Open Font License.
+
+Project media, technical takeaways, and expandable details are centralized in `src/data/profile.ts`. See `docs/content-audit.md` for the repository evidence and limitations behind the project copy.
 
 ## Verification
 

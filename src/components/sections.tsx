@@ -1,4 +1,5 @@
 import { profile } from "@/data/profile";
+import Image from "next/image";
 
 export function SectionHeading({
   number,
@@ -25,8 +26,8 @@ export function Experience() {
     <section id="experience" className="section experience">
       <SectionHeading
         number="02"
-        title="Learning on the job."
-        note="Real products. New perspectives."
+        title="Experience."
+        note="Internships & product teams"
       />
       <div className="experience-list">
         {profile.experience.map((job) => (
@@ -38,7 +39,11 @@ export function Experience() {
             </div>
             <div className="job-description">
               <p>{job.description}</p>
-              <span>{job.tags}</span>
+              <ul className="contribution-list">
+                {job.contributions.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
             </div>
           </article>
         ))}
@@ -50,7 +55,7 @@ export function Experience() {
 export function About() {
   return (
     <section id="about" className="section about">
-      <SectionHeading number="03" title="Still early. All in." />
+      <SectionHeading number="03" title="About me." />
       <div className="about-grid">
         <div className="about-title">
           <p className="eyebrow">A LITTLE CONTEXT</p>
@@ -85,9 +90,9 @@ export function About() {
             toolbox.
           </h3>
           <p>
-            Tools I use. Ideas I’m
+            What I use and what
             <br />
-            getting deeper into.
+            I’m learning next.
           </p>
         </div>
         {profile.skills.map((group) => (
@@ -122,9 +127,27 @@ export function Life() {
             at my desk<span>.</span>
           </h2>
           <p>
-            There’s usually a game to play,
-            <br />a set to finish, or something on repeat.
+            Away from my laptop, I’m usually playing basketball, going for a
+            run, or listening to music.
           </p>
+          <figure className="personal-photo">
+            <picture>
+              <source
+                media="(max-width: 760px)"
+                srcSet={`${profile.portrait.small} 320w, ${profile.portrait.src} 640w`}
+                sizes="(max-width: 430px) 150px, 200px"
+              />
+              <Image
+                src={profile.portrait.src}
+                alt={profile.portrait.alt}
+                width={profile.portrait.width}
+                height={profile.portrait.height}
+                loading="lazy"
+                unoptimized
+              />
+            </picture>
+            <figcaption>Same person, fewer browser tabs.</figcaption>
+          </figure>
         </div>
         <div className="life-notes">
           <div className="activity-note">
@@ -137,11 +160,12 @@ export function Life() {
             ))}
           </div>
           <div className="music-note">
-            <span className="eyebrow">IN THE ROTATION</span>
-            <p>{profile.artists.join(" / ")}</p>
-            <span className="music-caption">
-              Good music makes a long day better.
-            </span>
+            <span className="eyebrow">LISTENING LATELY</span>
+            <ul>
+              {profile.artists.map((artist) => (
+                <li key={artist}>{artist}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
@@ -167,8 +191,9 @@ export function Contact() {
             LOOKING AHEAD / {profile.opportunity.term.toUpperCase()}
           </span>
           <p>
-            I’m looking for an internship where I can contribute, ask better
-            questions, and learn from people who care about what they build.
+            I’m looking for a summer internship where I can work on useful
+            software and learn from an engineering team. I’m especially
+            interested in backend, AI/ML, and systems work.
           </p>
           <p className="opportunity-roles">{profile.opportunity.roles}</p>
           <p className="muted">{profile.opportunity.relocation}</p>

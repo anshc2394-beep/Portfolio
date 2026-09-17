@@ -2,11 +2,29 @@ export type Project = {
   id: string;
   name: string;
   category: string;
-  year: string;
+  year?: string;
   description: string;
   stack: string[];
   github: string | null;
   live: string | null;
+  media:
+    | {
+        kind: "screenshot";
+        src: string;
+        alt: string;
+        width: number;
+        height: number;
+        label: string;
+        caption: string;
+      }
+    | {
+        kind: "pipeline";
+        label: string;
+        caption: string;
+        steps: { title: string; detail: string }[];
+      }
+    | { kind: "voice"; label: string; caption: string };
+  takeaway: string;
   details: { label: string; text: string }[];
 };
 
@@ -17,6 +35,13 @@ export const profile = {
   github: "https://github.com/anshc2394-beep",
   linkedin: "https://www.linkedin.com/in/ansh-chaudhary-9b3214354/",
   resume: "/Ansh-Chaudhary-Resume.pdf",
+  portrait: {
+    src: "/ansh-portrait.webp",
+    small: "/ansh-portrait-small.webp",
+    alt: "Ansh Chaudhary smiling in a black shirt",
+    width: 640,
+    height: 640,
+  },
   headline: "Software, systems, and a little curiosity.",
   intro:
     "I’m a sophomore studying Computer Systems Engineering at the University of Georgia. I build for the web and explore how AI can make software more useful.",
@@ -43,7 +68,10 @@ export const profile = {
       context: "Remote",
       description:
         "Working on LLM integration, model inference, and prompt-tuning workflows in a recruiting technology environment.",
-      tags: "Language models / Inference / Semantic search",
+      contributions: [
+        "Contributing to model inference and prompt-tuning workflows.",
+        "Working with the team on semantic search and talent-matching functionality.",
+      ],
     },
     {
       company: "Offerdox",
@@ -51,8 +79,11 @@ export const profile = {
       date: null,
       context: "HR technology",
       description:
-        "Worked on web and mobile product functionality and UX, with exposure to AI-assisted recruiting and collaboration in a real product team.",
-      tags: "Web & mobile / Product UX / Recruiting technology",
+        "Contributed to an HR technology product in a team development environment.",
+      contributions: [
+        "Worked on web and mobile functionality and UX, connecting product decisions to how people use the software.",
+        "Gained exposure to AI-assisted recruiting tools and the process of developing a product with a team.",
+      ],
     },
     {
       company: "THRIVE | Coworking",
@@ -60,8 +91,11 @@ export const profile = {
       date: "Aug 2024 — Jan 2025",
       context: "Alpharetta, GA",
       description:
-        "Worked on an AI-powered employee training platform and custom learning management system, using Python, Java, and data tools to support personalized learning.",
-      tags: "Python / Java / Machine learning / SQL",
+        "Worked on an AI-powered employee training platform and custom learning management system.",
+      contributions: [
+        "Used Python, Java, and machine-learning tools to support personalized training content.",
+        "Worked with data processing and SQL in the context of employee learning and business reporting.",
+      ],
     },
   ],
   skills: [
@@ -81,6 +115,8 @@ export const profile = {
       items: [
         "Next.js",
         "FastAPI",
+        "Flask",
+        "Scikit-learn",
         "Git & GitHub",
         "REST APIs",
         "SQLite",
@@ -94,11 +130,12 @@ export const profile = {
         "Data structures",
         "Backend development",
         "Computer systems",
+        "Computer networks",
       ],
     },
   ],
-  interests: ["Strength training", "Basketball", "Pickleball"],
-  artists: ["Lauryn Hill", "Drake"],
+  interests: ["Basketball", "Going on runs", "Listening to music"],
+  artists: ["Lauryn Hill", "The Alchemist", "Alicia Keys"],
   // Add verified coursework here when available. Do not infer completed courses.
   coursework: [] as string[],
 };
@@ -110,10 +147,21 @@ export const projects: Project[] = [
     category: "Full-stack · Simulation",
     year: "2026",
     description:
-      "One tournament. A lot of possible futures. A World Cup simulator for exploring how group-stage scores shape the path to the final.",
+      "A World Cup simulator for exploring a simple question: how much can one group-stage result change a team’s path to the final? Edit scores, follow the bracket, and compare simulated outcomes.",
     stack: ["Next.js", "TypeScript", "Python", "FastAPI", "SQLite"],
     github: "https://github.com/anshc2394-beep/World-Cup-Path",
     live: null, // Add the verified public deployment URL here.
+    media: {
+      kind: "screenshot",
+      src: "/world-cup-path.webp",
+      alt: "World Cup Path application showing its tournament simulator and prediction tools",
+      width: 1440,
+      height: 748,
+      label: "WORLD CUP PATH / 2026",
+      caption: "Project screenshot",
+    },
+    takeaway:
+      "The useful part is keeping the tournament rules separate from the interface, so manual predictions and simulations use the same logic.",
     details: [
       {
         label: "The idea",
@@ -130,15 +178,63 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "netwatch-soc",
+    name: "NetWatch SOC",
+    category: "Networks · Machine learning",
+    description:
+      "An experimental network-monitoring project exploring the gap between raw packets and a useful alert. It brings together flow aggregation, Isolation Forest anomaly scoring, and a Flask investigation interface.",
+    stack: ["Python", "Flask", "Scapy", "Scikit-learn"],
+    github: "https://github.com/anshc2394-beep/NetWatch-SOC",
+    live: null,
+    media: {
+      kind: "pipeline",
+      label: "NETWATCH SOC / SYSTEM DESIGN",
+      caption: "Architecture study · experimental implementation",
+      steps: [
+        { title: "Capture", detail: "Scapy thread → packet queue" },
+        { title: "Aggregate", detail: "5-tuple flows → timed windows" },
+        { title: "Score", detail: "Behavioral features → Isolation Forest" },
+        { title: "Investigate", detail: "Flask API → related flow activity" },
+      ],
+    },
+    takeaway:
+      "An unusual flow is a starting point for investigation—not proof of an attack. The baseline and the features matter as much as the model.",
+    details: [
+      {
+        label: "The question",
+        text: "How do you turn a stream of individual packets into behavior worth investigating? The project groups traffic by source and destination addresses, ports, and protocol before scoring it.",
+      },
+      {
+        label: "Under the hood",
+        text: "A capture thread feeds a bounded queue. A separate worker aggregates five-second flow windows, including packet counts, byte counts, duration, and packet timing. The detector code scales those features and fits an unsupervised Isolation Forest.",
+      },
+      {
+        label: "Engineering focus",
+        text: "Separating capture from feature processing keeps packet handling out of Flask’s request path. API endpoints expose flows, alerts, and IP-related activity for the investigation UI.",
+      },
+      {
+        label: "Current scope",
+        text: "This is a learning project with an implemented UI and a live detection path still under development. Its demo data is simulated; anomaly scores describe deviation from a baseline, not verified attack classifications.",
+      },
+    ],
+  },
+  {
     id: "desk-caddy",
     name: "Desk Caddy AI",
-    category: "AI · Voice workflows",
+    category: "Voice · Backend workflows",
     year: "2025 — Present",
     description:
       "A front-desk phone assistant that captures appointment requests, saves leads, and notifies the business owner. Built around keeping a conversation on track.",
-    stack: ["Python", "Node.js", "REST APIs", "LLMs", "Webhooks"],
+    stack: ["Python", "FastAPI", "Twilio", "SQLAlchemy"],
     github: "https://github.com/anshc2394-beep/DeskReceptionistAI",
     live: null,
+    media: {
+      kind: "voice",
+      label: "DESK CADDY AI",
+      caption: "Deterministic voice flow",
+    },
+    takeaway:
+      "The interesting work is handling silence, repeated questions, and partial answers—not just the happy path through a call.",
     details: [
       {
         label: "The idea",
@@ -146,11 +242,11 @@ export const projects: Project[] = [
       },
       {
         label: "Under the hood",
-        text: "Multi-stage conversational state machines preserve context. Intent routing and fallback handling help manage interruptions and unclear input.",
+        text: "Twilio speech webhooks feed a deterministic FastAPI flow: language, service, preferred time, name, phone, and confirmation. SQLAlchemy stores the current step and collected answers across requests.",
       },
       {
         label: "The engineering challenge",
-        text: "Coordinating asynchronous services with JSON schemas while keeping response time and conversational continuity in mind.",
+        text: "Retry counters handle empty speech. Pattern matching catches questions the assistant cannot answer, with a fallback to taking a message. Completed requests are saved as leads and passed to the notification code.",
       },
     ],
   },

@@ -33,7 +33,7 @@ export function Navigation() {
       >
         ac<span>.</span>
       </a>
-      <span className="header-note">A WORK IN PROGRESS. SO AM I.</span>
+      <span className="header-note">ANSH CHAUDHARY / PORTFOLIO</span>
       <button
         ref={toggle}
         className="menu-toggle"
