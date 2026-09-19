@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { profile } from "@/data/profile";
-import { MotionController } from "@/components/motion-controller";
 import "./globals.css";
-import "./motion.css";
 
 const display = localFont({
   src: "../../public/fonts/space-grotesk-semibold.ttf",
@@ -38,10 +36,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${body.variable}`}>
-        {children}
-        <MotionController />
-      </body>
+      <body className={`${display.variable} ${body.variable}`}>{children}</body>
     </html>
   );
 }
