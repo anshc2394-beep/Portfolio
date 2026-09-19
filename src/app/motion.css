@@ -1,0 +1,144 @@
+/* Motion-only enhancement. Static content and geometry remain in globals.css. */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-feedback: 240ms;
+}
+
+@property --rule-progress {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
+
+@keyframes hero-settle {
+  from { opacity: .35; transform: translateY(var(--entrance-distance, 12px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes menu-arrive {
+  from { opacity: .5; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Nonzero initial opacity keeps the first paint readable and avoids delaying LCP. */
+  html:not(:has(:target)) .hero-top {
+    animation: hero-settle 600ms var(--motion-ease) both;
+  }
+  html:not(:has(:target)) .hero h1 {
+    --entrance-distance: 24px;
+    animation: hero-settle 760ms var(--motion-ease) 45ms both;
+  }
+  html:not(:has(:target)) .hero-bottom {
+    animation: hero-settle 650ms var(--motion-ease) 130ms both;
+  }
+  html:not(:has(:target)) .hero-foot {
+    --entrance-distance: 8px;
+    animation: hero-settle 600ms var(--motion-ease) 190ms both;
+  }
+  .hero :focus-within { animation: none !important; }
+
+  .project-screen { transition: none; }
+  .project-screen:hover { transform: none; }
+  .project-screen img {
+    transition: transform 700ms var(--motion-ease);
+  }
+
+  .experience-row {
+    position: relative;
+    border-bottom-color: transparent;
+  }
+  .experience-row::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: var(--line);
+    transform: scaleX(var(--rule-progress, 1));
+    transform-origin: left;
+    pointer-events: none;
+  }
+  .details-icon { transition: transform var(--motion-feedback) var(--motion-ease); }
+  .project-details summary { transition: color var(--motion-feedback) var(--motion-ease); }
+}
+
+/* Retain current link colors/borders; an accent line travels over the existing rule. */
+.navigation > a,
+.text-link,
+.contact-links a,
+.hero-foot > a,
+footer > a:last-child {
+  position: relative;
+}
+.navigation > a::after,
+.text-link::after,
+.contact-links a::after,
+.hero-foot > a::after,
+footer > a:last-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-feedback) var(--motion-ease);
+  pointer-events: none;
+}
+.navigation > .resume-nav::after { left: 17px; right: 17px; bottom: 5px; }
+a { transition: color var(--motion-feedback) var(--motion-ease); }
+.button {
+  transition: color var(--motion-feedback) var(--motion-ease), background-color var(--motion-feedback) var(--motion-ease), border-color var(--motion-feedback) var(--motion-ease);
+}
+.text-link > span[aria-hidden],
+.button > span[aria-hidden],
+.resume-nav > span[aria-hidden],
+.contact h2 a > span {
+  display: inline-block;
+  transition: transform var(--motion-feedback) var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navigation > a:hover::after,
+  .text-link:hover::after,
+  .contact-links a:hover::after,
+  .hero-foot > a:hover::after,
+  footer > a:last-child:hover::after { transform: scaleX(1); }
+  .project-details summary:hover { color: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) {
+    .project-screen:hover img { transform: scale(1.015); }
+    .text-link:hover > span[aria-hidden],
+    .resume-nav:hover > span[aria-hidden],
+    .contact h2 a:hover > span { transform: translate(2px, -2px); }
+    .button:hover > span[aria-hidden] { transform: translateY(3px); }
+  }
+}
+.navigation > a:focus-visible::after,
+.text-link:focus-visible::after,
+.contact-links a:focus-visible::after,
+.hero-foot > a:focus-visible::after,
+footer > a:last-child:focus-visible::after { transform: scaleX(1); }
+.project-details summary:focus-visible { color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) {
+  .text-link:focus-visible > span[aria-hidden],
+  .resume-nav:focus-visible > span[aria-hidden],
+  .contact h2 a:focus-visible > span { transform: translate(2px, -2px); }
+  .button:focus-visible > span[aria-hidden] { transform: translateY(3px); }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  html:not(:has(:target)) .hero h1 { --entrance-distance: 14px; }
+  html:not(:has(:target)) .hero-bottom { --entrance-distance: 8px; }
+  .navigation.is-open { animation: menu-arrive 220ms var(--motion-ease) both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-screen:hover, .project-screen:hover img { transform: none; }
+}
+@media print {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
