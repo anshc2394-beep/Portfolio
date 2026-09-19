@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { profile } from "@/data/profile";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   ["Projects", "#projects"],
@@ -34,6 +35,7 @@ export function Navigation() {
         ac<span>.</span>
       </a>
       <span className="header-note">ANSH CHAUDHARY / PORTFOLIO</span>
+      <ThemeToggle />
       <button
         ref={toggle}
         className="menu-toggle"

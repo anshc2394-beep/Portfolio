@@ -309,7 +309,7 @@ a:hover {
   margin-bottom: 64px;
 }
 .project-visual {
-  background: #dfe2d2;
+  background: var(--surface-project);
   padding: 23px 44px 20px;
   overflow: hidden;
 }
@@ -560,9 +560,9 @@ a:hover {
   line-height: 1.9;
 }
 .life {
-  background: #e4e5da;
-  border-top: 1px solid #d4d5c9;
-  border-bottom: 1px solid #d4d5c9;
+  background: var(--surface-life);
+  border-top: 1px solid var(--life-border);
+  border-bottom: 1px solid var(--life-border);
 }
 .life-inner {
   padding: 75px var(--gutter);
@@ -597,7 +597,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 30px;
-  border-bottom: 1px solid #c4c7b8;
+  border-bottom: 1px solid var(--photo-border);
   padding: 16px 0;
 }
 .activity-note > div > span {
@@ -1169,7 +1169,7 @@ body {
 }
 /* Refinements: readable annotations, project evidence, and a personal photograph. */
 .project-netwatch-soc .project-visual {
-  background: #e7e2d9;
+  background: var(--surface-network);
   padding: 26px 44px;
 }
 .network-study {
@@ -1198,12 +1198,12 @@ body {
   grid-template-columns: 28px 1fr 20px;
   gap: 16px;
   padding: 18px 0;
-  border-bottom: 1px solid #c6c0b5;
+  border-bottom: 1px solid var(--network-border);
   align-items: baseline;
 }
 .pipeline-index {
   font: 12px var(--mono);
-  color: #a83220;
+  color: var(--small-accent);
 }
 .network-pipeline strong {
   display: block;
@@ -1215,7 +1215,7 @@ body {
 .network-pipeline p {
   margin-top: 6px;
   font-size: 14px;
-  color: #5e5d55;
+  color: var(--network-muted);
 }
 .network-pipeline li > span:last-child {
   color: var(--accent);
@@ -1228,7 +1228,7 @@ body {
   align-items: baseline;
   gap: 35px;
   padding: 20px 0;
-  border-top: 1px solid #c6c0b5;
+  border-top: 1px solid var(--network-border);
 }
 .flow-key > span {
   font: 12px/1.6 var(--mono);
@@ -1236,10 +1236,10 @@ body {
 }
 .flow-key p {
   font-size: 14px;
-  color: #5e5d55;
+  color: var(--network-muted);
 }
 .project-netwatch-soc .visual-bottomline {
-  border-top: 1px solid #c6c0b5;
+  border-top: 1px solid var(--network-border);
   padding-top: 18px;
 }
 .project-takeaway {
@@ -1298,7 +1298,7 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid #c4c7b8;
+  border: 1px solid var(--photo-border);
 }
 .personal-photo figcaption {
   max-width: 140px;
@@ -1519,5 +1519,5 @@ footer > a:last-child {
 }
 
 .music-note > .eyebrow {
-  color: #a83220;
+  color: var(--small-accent);
 }

@@ -28,9 +28,9 @@ export default function Home() {
             </a>
           </div>
           <h1>
-            <span>Ansh</span>
+            <span><span className="hero-ink">Ansh</span></span>
             <span>
-              Chaudhary<span className="name-period">.</span>
+              <span className="hero-ink">Chaudhary<span className="name-period">.</span></span>
             </span>
           </h1>
           <div className="hero-bottom">
