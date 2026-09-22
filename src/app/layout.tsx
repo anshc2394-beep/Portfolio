@@ -4,6 +4,7 @@ import { profile } from "@/data/profile";
 import "./globals.css";
 import "./experience.css";
 import { MotionDirector } from "@/components/motion-director";
+import { Analytics } from "@vercel/analytics/next";
 
 const display = localFont({
   src: "../../public/fonts/space-grotesk-semibold.ttf",
@@ -41,7 +42,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: `(()=>{const r=document.documentElement;let t;try{t=localStorage.getItem('portfolio-theme')}catch{}r.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.dataset.arrival='waiting';const show=()=>{r.dataset.arrival='ready'};document.addEventListener('DOMContentLoaded',()=>{document.fonts.ready.then(show);setTimeout(show,1000)},{once:true})}})()` }} />
       </head>
-      <body className={`${display.variable} ${body.variable}`}>{children}<MotionDirector /></body>
+      <body className={`${display.variable} ${body.variable}`}>{children}<MotionDirector /><Analytics /></body>
     </html>
   );
 }
