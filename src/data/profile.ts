@@ -16,6 +16,8 @@ export type Project = {
         height: number;
         label: string;
         caption: string;
+        tagline: string;
+        footline: string;
       }
     | {
         kind: "pipeline";
@@ -142,6 +144,48 @@ export const profile = {
 
 export const projects: Project[] = [
   {
+    id: "tastegraph",
+    name: "TasteGraph",
+    category: "Full-stack · Data visualization",
+    year: "2026",
+    description:
+      "A Spotify dashboard that turns your listening history into an interactive map of your taste. Explore your top artists as a constellation, switch between three listening windows, and see how much your taste is drifting.",
+    stack: ["Next.js", "TypeScript", "React", "Motion", "Spotify Web API"],
+    github: "https://github.com/anshc2394-beep/TasteGraph",
+    live: "https://taste-graph-xi.vercel.app/demo",
+    media: {
+      kind: "screenshot",
+      src: "/tastegraph.webp",
+      alt: "TasteGraph live demo showing the artist constellation, the Taste Drift score, and the artist in focus",
+      width: 1440,
+      height: 748,
+      label: "TASTEGRAPH / 2026",
+      caption: "Live demo · anonymized data",
+      tagline: "YOUR LISTENING, MAPPED.",
+      footline: "THREE LISTENING WINDOWS",
+    },
+    takeaway:
+      "Security doesn’t need a database. Keeping tokens out of the browser’s JavaScript and every Spotify call on the server did more than any extra infrastructure would have.",
+    details: [
+      {
+        label: "The idea",
+        text: "Spotify tells you your top artists but not how your taste is shaped or changing. TasteGraph compares your 4-week, 6-month, and 1-year rankings to show who is rising, who stays, and who is fading.",
+      },
+      {
+        label: "Under the hood",
+        text: "Taste Drift is a rank-weighted Jaccard distance: each artist is weighted by 1 / log2(rank + 1), so your top artists count for more than your fiftieth. It lives in a pure, unit-tested analytics module.",
+      },
+      {
+        label: "The engineering challenge",
+        text: "A server-side OAuth flow with PKCE, tokens kept in httpOnly __Host- cookies, automatic refresh, and a per-request nonce Content-Security-Policy. Six Spotify requests run concurrently, and a failed window shows as unavailable instead of silently empty.",
+      },
+      {
+        label: "Current scope",
+        text: "Spotify limits development apps to a few invited accounts, so the public demo runs the same dashboard on an anonymized snapshot of my listening. A sanitizer script refuses to publish it if any account detail survives.",
+      },
+    ],
+  },
+  {
     id: "world-cup-path",
     name: "World Cup Path",
     category: "Full-stack · Simulation",
@@ -159,6 +203,8 @@ export const projects: Project[] = [
       height: 748,
       label: "WORLD CUP PATH / 2026",
       caption: "Project screenshot",
+      tagline: "48 TEAMS. ONE TROPHY.",
+      footline: "EXPLORE EVERY POSSIBLE PATH",
     },
     takeaway:
       "The useful part is keeping the tournament rules separate from the interface, so manual predictions and simulations use the same logic.",

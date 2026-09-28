@@ -15,7 +15,7 @@ export function ProjectFeature({
           <>
             <div className="visual-topline">
               <span>{project.media.label}</span>
-              <span>48 TEAMS. ONE TROPHY.</span>
+              <span>{project.media.tagline}</span>
             </div>
             <div className="project-screen">
               <Image
@@ -29,7 +29,7 @@ export function ProjectFeature({
               />
             </div>
             <div className="visual-bottomline">
-              <span>EXPLORE EVERY POSSIBLE PATH</span>
+              <span>{project.media.footline}</span>
               <span>{project.media.caption}</span>
             </div>
           </>
