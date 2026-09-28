@@ -13,15 +13,17 @@ export function MotionDirector() {
     const timelines = new Map<Element, Animation[]>();
     const animated = new Set<Element>();
     let disposed = false;
-    function prepare(group: Element, target: Element | null, type: "mask" | "settle" | "media" | "rule", delay = 0) {
+    function prepare(group: Element, target: Element | null, type: "mask" | "settle" | "lift" | "media" | "rule", delay = 0) {
       if (!target || (type !== "rule" && animated.has(target))) return;
       if (type !== "rule") animated.add(target);
       let frames: Keyframe[];
       if (type === "mask") frames = [{ clipPath: "inset(100% -8px -8px -8px)", transform: "translateY(35%)" }, { clipPath: "inset(-8px -8px -8px -8px)", transform: "translateY(0)" }];
       else if (type === "media") frames = [{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0 0 0 0)" }];
       else if (type === "rule") frames = [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }];
+      // A short rise for small inline pieces, where the full settle distance would feel bouncy.
+      else if (type === "lift") frames = [{ opacity: 0, transform: `translateY(${tokens.distance * .3}px)` }, { opacity: 1, transform: "translateY(0)" }];
       else frames = [{ opacity: 0, transform: `translateY(${target.matches("footer") ? 0 : tokens.distance}px)` }, { opacity: 1, transform: "translateY(0)" }];
-      const animation = target.animate(frames, { duration: type === "settle" ? tokens.medium : tokens.slow, delay, easing: tokens.ease, fill: "both", ...(type === "rule" ? { pseudoElement: "::before" } : {}) });
+      const animation = target.animate(frames, { duration: type === "settle" || type === "lift" ? tokens.medium : tokens.slow, delay, easing: tokens.ease, fill: "both", ...(type === "rule" ? { pseudoElement: "::before" } : {}) });
       animation.pause();
       timelines.get(group)!.push(animation);
       animation.finished.then(() => animation.cancel(), () => {});
@@ -56,6 +58,9 @@ export function MotionDirector() {
         }
         at(".project-info > div:first-child", "settle", 180);
         at(".project-description", "settle", 280);
+        group.querySelectorAll(".technology-list li").forEach((tag, i) => prepare(group, tag, "lift", 420 + i * 55));
+        at(".project-takeaway", "rule", 360);
+        at(".project-takeaway", "settle", 460);
       } else if (group.matches(".section-heading")) {
         at("h2", "mask"); at(".section-number", "settle", 80); at(":scope > p", "settle", 160);
         if (group.parentElement?.id === "experience") prepare(group, group.nextElementSibling, "rule");

@@ -100,9 +100,31 @@ html[data-theme="dark"] ::selection { color: var(--paper); }
 }
 .toolbox, .experience-list, .contact-links { position: relative; border-top-color: transparent; }
 .toolbox::before, .experience-list::before, .contact-links::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px; background: var(--line); transform-origin: left; }
+/* The takeaway divider draws across like the other section rules. */
+.project-takeaway { position: relative; border-top-color: transparent; }
+.project-takeaway::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px; background: var(--line); transform-origin: left; }
+.details-icon { transition: transform var(--motion-fast) var(--ease-editorial); }
+@keyframes detail-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes screen-drift { from { translate: 0 -2.2%; } to { translate: 0 2.2%; } }
+@keyframes reading-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  /* Opening a case study unfolds its notes one after another. */
+  .project-details[open] .detail-grid > div { animation: detail-arrive var(--motion-medium) var(--ease-editorial) backwards; }
+  .project-details[open] .detail-grid > div:nth-child(2) { animation-delay: 70ms; }
+  .project-details[open] .detail-grid > div:nth-child(3) { animation-delay: 140ms; }
+  .project-details[open] .detail-grid > div:nth-child(4) { animation-delay: 210ms; }
+  @supports (animation-timeline: view()) {
+    /* Screenshots drift inside their frames with the scroll. `translate` and `scale`
+       compose with the hover `transform`, so neither overwrites the other. */
+    .project-screen img { scale: 1.05; animation: screen-drift linear both; animation-timeline: view(); animation-range: cover; }
+  }
+  @supports (animation-timeline: scroll()) {
+    body::after { content: ""; position: fixed; z-index: 101; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform-origin: left; pointer-events: none; animation: reading-progress linear both; animation-timeline: scroll(root); }
+  }
+}
 @media (max-width: 760px) { :root { --motion-hero: 850ms; --motion-slow: 800ms; --motion-medium: 600ms; --motion-distance: 26px; } }
 @media (prefers-reduced-motion: reduce) {
   .hero-ink, .project-screen:hover img { transform: none !important; }
   .hero h1 > span { clip-path: none !important; }
 }
-@media print { *, *::before, *::after { animation: none !important; transition: none !important; } .hero-ink { transform: none !important; } .theme-toggle { display: none; } }
+@media print { *, *::before, *::after { animation: none !important; transition: none !important; } body::after { display: none; } .hero-ink { transform: none !important; } .theme-toggle { display: none; } }
