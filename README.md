@@ -24,7 +24,8 @@ The production website is generated in `out/`. Serve that directory with any sta
 - `src/data/profile.ts`: biography, contacts, education, internship interests, skills, experience, and projects. Add projects to the typed array.
 - `public/Ansh-Chaudhary-Resume.pdf`: replace this file to update both the viewing and download actions.
 - `src/components/project.tsx`: project presentations, including the real World Cup Path screenshot and Desk Caddy architecture diagram.
-- `src/app/globals.css`: colors, typography, layout, responsive rules, and reduced-motion behavior.
+- `src/app/theme.css`: color tokens for both themes, plus surface and glow treatments.
+- `src/app/globals.css`: typography, layout, responsive rules, and reduced-motion behavior.
 - `src/app/layout.tsx`: title, description, Open Graph, and social metadata.
 
 Optional project demo URLs remain `null` until a verified deployment is available; no broken or placeholder links are displayed. Offerdox dates and completed coursework were not supplied, so neither is invented. The résumé's exact degree name is used. Desk Caddy copy reflects the public repository's appointment-request capture behavior, rather than claiming automatic booking.

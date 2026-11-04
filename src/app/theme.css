@@ -1,0 +1,194 @@
+/* Obsidian Black × Blaze Orange × Glacier Blue.
+   The single source of truth for color: palette primitives, then the semantic
+   tokens each theme maps them to, then the surface and light treatments.
+   Layout and motion live in globals.css and experience.css. */
+
+:root {
+  --obsidian-950: #060709;
+  --obsidian-900: #0a0b0e;
+  --obsidian-850: #111419;
+  --obsidian-800: #191d24;
+  --blaze-300: #ff743d;
+  --blaze-500: #ff5a1f;
+  --blaze-600: #d9430d;
+  --blaze-700: #bc3807;
+  --blaze-800: #a33105;
+  --glacier-200: #b7eaff;
+  --glacier-300: #8ed8f8;
+  --glacier-500: #559cbf;
+  --glacier-700: #0b6a93;
+  --glacier-800: #085577;
+  --neutral-50: #f5f7fa;
+  --neutral-400: #a4abb7;
+  --neutral-500: #737d8c;
+  --sheen-on-obsidian: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0) 45%);
+
+  /* Light theme. Accents are deepened because the bright hues fail AA on light surfaces. */
+  --background: #f6f7f9;
+  --background-deep: #eceff3;
+  --surface: #e9edf1;
+  --surface-elevated: #ffffff;
+  --surface-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 45%);
+  --foreground: #0e1116;
+  --foreground-secondary: #4a525e;
+  --foreground-muted: #5a6370;
+  --accent-primary: var(--blaze-700);
+  --accent-primary-hover: var(--blaze-800);
+  --accent-primary-deep: var(--blaze-800);
+  --on-accent: #ffffff;
+  --accent-secondary: var(--glacier-700);
+  --accent-secondary-hover: var(--glacier-800);
+  --accent-secondary-muted: var(--glacier-500);
+  --border-subtle: rgba(10, 11, 14, 0.12);
+  --border-strong: rgba(10, 11, 14, 0.2);
+  --border-accent: rgba(11, 106, 147, 0.34);
+  --glow-orange: rgba(217, 67, 13, 0.08);
+  --glow-blue: rgba(11, 106, 147, 0.07);
+  --edge-highlight: rgba(255, 255, 255, 0.7);
+  --edge-orange: rgba(196, 60, 8, 0.42);
+  --edge-blue: rgba(11, 106, 147, 0.42);
+  --panel-inverse: var(--obsidian-850);
+  --screen-frame: var(--obsidian-800);
+  --screen-shadow: rgba(10, 11, 14, 0.18);
+  --header-shadow: rgba(10, 11, 14, 0.14);
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --background: var(--obsidian-900);
+  --background-deep: var(--obsidian-950);
+  --surface: var(--obsidian-850);
+  --surface-elevated: var(--obsidian-800);
+  --surface-sheen: var(--sheen-on-obsidian);
+  --foreground: var(--neutral-50);
+  --foreground-secondary: var(--neutral-400);
+  --foreground-muted: var(--neutral-500);
+  --accent-primary: var(--blaze-500);
+  --accent-primary-hover: var(--blaze-300);
+  --accent-primary-deep: var(--blaze-600);
+  --on-accent: var(--obsidian-950);
+  --accent-secondary: var(--glacier-300);
+  --accent-secondary-hover: var(--glacier-200);
+  --accent-secondary-muted: var(--glacier-500);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-accent: rgba(142, 216, 248, 0.3);
+  --glow-orange: rgba(255, 90, 31, 0.18);
+  --glow-blue: rgba(142, 216, 248, 0.14);
+  --edge-highlight: rgba(255, 255, 255, 0.05);
+  --edge-orange: rgba(255, 90, 31, 0.42);
+  --edge-blue: rgba(142, 216, 248, 0.36);
+  --panel-inverse: var(--obsidian-800);
+  --screen-frame: var(--obsidian-800);
+  --screen-shadow: rgba(0, 0, 0, 0.5);
+  --header-shadow: rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+/* Ambient light. Static paint on existing boxes: no extra layers, loops, or blur.
+   Each glow fades out before its box's edge so ultra-wide screens show no seam. */
+main {
+  background-image:
+    radial-gradient(ellipse 760px 560px at 76% 340px, var(--glow-orange), 38%, transparent),
+    radial-gradient(ellipse 620px 420px at 6% 780px, var(--glow-blue), 38%, transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 1240px;
+}
+.experience {
+  background-image: radial-gradient(ellipse 30% 320px at 70% 330px, var(--glow-blue), 38%, transparent);
+  background-repeat: no-repeat;
+}
+.contact {
+  background-image: radial-gradient(ellipse 38% 280px at 38% 300px, var(--glow-orange), 38%, transparent);
+  background-repeat: no-repeat;
+}
+.life {
+  background-image: var(--surface-sheen);
+}
+footer {
+  background-color: var(--background-deep);
+}
+
+.site-header {
+  box-shadow: 0 14px 30px -26px var(--header-shadow);
+}
+
+/* Inset shadows draw the card edges so no box changes size. An outer shadow would
+   also be cut off by the entrance clip-path and pop in when it finishes. */
+.project-visual {
+  --card-glow: var(--glow-orange);
+  --card-edge: var(--edge-orange);
+  background-image: var(--surface-sheen);
+  box-shadow:
+    inset 0 0 0 1px var(--border-subtle),
+    inset 0 1px 0 var(--edge-highlight);
+  transition: box-shadow var(--motion-fast) ease;
+}
+.project-netwatch-soc .project-visual,
+.project-desk-caddy .project-visual {
+  --card-glow: var(--glow-blue);
+  --card-edge: var(--edge-blue);
+}
+/* The system-flow panel stays obsidian in both themes, so its tokens stay dark too. */
+.project-desk-caddy .project-visual {
+  --foreground: var(--neutral-50);
+  --foreground-secondary: var(--neutral-400);
+  --accent-secondary: var(--glacier-300);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --surface-sheen: var(--sheen-on-obsidian);
+  --edge-highlight: rgba(255, 255, 255, 0.05);
+  --edge-blue: rgba(142, 216, 248, 0.36);
+  --glow-blue: rgba(142, 216, 248, 0.14);
+  background-color: var(--panel-inverse);
+  color: var(--foreground);
+}
+
+.button {
+  box-shadow: 0 10px 24px -16px var(--accent-primary);
+}
+.button:active {
+  background: var(--accent-primary-deep);
+  border-color: var(--accent-primary-deep);
+}
+.status-dot {
+  box-shadow: 0 0 0 3px var(--glow-orange);
+}
+.text-link:hover,
+.contact-links > div > a:hover,
+.project-details summary:hover,
+.resume-nav:hover,
+.theme-toggle:hover {
+  color: var(--accent-secondary-hover);
+}
+.menu-toggle:hover {
+  color: var(--accent-primary);
+}
+.resume-nav {
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.project-details summary {
+  transition: color 0.18s ease;
+}
+/* The transitions above would otherwise replace the 400ms theme-switch fade. */
+.theme-changing :is(.project-visual, .resume-nav, .project-details summary) {
+  transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    box-shadow: 0 12px 30px -10px var(--glow-orange), 0 10px 26px -14px var(--accent-primary-hover);
+  }
+  .project-visual:hover {
+    box-shadow:
+      inset 0 0 0 1px var(--card-edge),
+      inset 0 1px 0 var(--edge-highlight),
+      0 26px 70px -30px var(--card-glow);
+  }
+  .navigation .resume-nav:hover {
+    border-color: var(--accent-secondary-muted);
+    box-shadow: 0 0 18px -6px var(--glow-blue);
+  }
+}

@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { profile } from "@/data/profile";
 import "./globals.css";
 import "./experience.css";
+import "./theme.css";
 import { MotionDirector } from "@/components/motion-director";
 
 const display = localFont({
@@ -32,6 +33,12 @@ export const metadata: Metadata = {
     siteName: profile.name,
   },
   twitter: { card: "summary", title, description },
+};
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f7f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0b0e" },
+  ],
 };
 export default function RootLayout({
   children,
