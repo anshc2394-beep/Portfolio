@@ -1,3 +1,4 @@
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { profile } from "@/data/profile";
 import Image from "next/image";
 
@@ -205,15 +206,9 @@ export function Contact() {
           <span aria-hidden="true">↗</span>
         </a>
         <div>
-          <a href={profile.github} target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn ↗
-          </a>
-          <a href={profile.resume} download="Ansh-Chaudhary-Resume.pdf">
-            Download résumé ↓
-          </a>
+          <InteractiveHoverButton text="GitHub" icon="↗" variant="secondary" href={profile.github} target="_blank" rel="noreferrer" />
+          <InteractiveHoverButton text="LinkedIn" icon="↗" variant="secondary" href={profile.linkedin} target="_blank" rel="noreferrer" />
+          <InteractiveHoverButton text="Download résumé" icon="↓" href={profile.resume} download="Ansh-Chaudhary-Resume.pdf" />
         </div>
       </div>
     </section>

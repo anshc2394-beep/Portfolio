@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation";
-import { ProjectFeature } from "@/components/project";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { ProjectIndex } from "@/components/ui/project-index";
 import {
   About,
   Contact,
@@ -7,7 +8,7 @@ import {
   Life,
   SectionHeading,
 } from "@/components/sections";
-import { profile, projects } from "@/data/profile";
+import { profile } from "@/data/profile";
 
 export default function Home() {
   return (
@@ -48,17 +49,15 @@ export default function Home() {
               <h2>{profile.headline}</h2>
               <p>{profile.intro}</p>
               <div className="hero-actions">
-                <a className="button" href="#projects">
-                  Explore my work <span aria-hidden="true">↓</span>
-                </a>
-                <a
-                  className="text-link"
+                <InteractiveHoverButton text="Explore my work" icon="↓" href="#projects" />
+                <InteractiveHoverButton
+                  text="GitHub"
+                  icon="↗"
+                  variant="secondary"
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer"
-                >
-                  GitHub ↗
-                </a>
+                />
               </div>
             </div>
           </div>
@@ -69,15 +68,15 @@ export default function Home() {
             </a>
           </div>
         </section>
-        <section className="section projects" id="projects">
-          <SectionHeading
-            number="01"
-            title="Selected projects."
-            note="Software, networks & applied ML"
-          />
-          {projects.map((project, index) => (
-            <ProjectFeature key={project.id} project={project} index={index} />
-          ))}
+        <section className="projects" id="projects">
+          <div className="section projects-intro">
+            <SectionHeading
+              number="01"
+              title="Selected projects."
+              note="Software, networks & applied ML"
+            />
+          </div>
+          <ProjectIndex />
         </section>
         <Experience />
         <About />

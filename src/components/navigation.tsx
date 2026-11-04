@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { profile } from "@/data/profile";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const links = [
   ["Projects", "#projects"],
@@ -55,15 +56,17 @@ export function Navigation() {
             {label}
           </a>
         ))}
-        <a
+        <InteractiveHoverButton
           className="resume-nav"
+          text="Résumé"
+          icon="↗"
+          variant="secondary"
           href={profile.resume}
           target="_blank"
           rel="noreferrer"
         >
-          Résumé <span aria-hidden="true">↗</span>
           <span className="sr-only"> (PDF, opens in a new tab)</span>
-        </a>
+        </InteractiveHoverButton>
       </nav>
     </header>
   );

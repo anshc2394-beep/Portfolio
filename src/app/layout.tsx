@@ -4,6 +4,8 @@ import { profile } from "@/data/profile";
 import "./globals.css";
 import "./experience.css";
 import "./theme.css";
+import "./hover-button.css";
+import "./projects.css";
 import { MotionDirector } from "@/components/motion-director";
 
 const display = localFont({
