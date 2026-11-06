@@ -1,15 +1,13 @@
 import Image from "next/image";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import type { Project } from "@/data/profile";
 
-export function ProjectFeature({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
+/** The Desk Caddy steps as plain lines, for the backdrop behind the project list. */
+export const voiceFlow = ["Inbound call", "Capture request", "Save & notify"];
+
+export function ProjectPanel({ project }: { project: Project }) {
   return (
-    <article className={`project project-${project.id}`}>
+    <div className="project-panel">
       <div className="project-visual">
         {project.media.kind === "screenshot" ? (
           <>
@@ -115,52 +113,31 @@ export function ProjectFeature({
           </>
         )}
       </div>
-      <div className="project-info">
-        <div>
-          <p className="eyebrow">
-            0{index + 1} / {project.category}{" "}
-            {project.year && (
-              <span className="project-year">{project.year}</span>
-            )}
-          </p>
-          <h3>
-            {project.name}
-            <span className="accent">.</span>
-          </h3>
-        </div>
-        <div className="project-description">
-          <p>{project.description}</p>
-          <ul className="technology-list" aria-label="Technologies">
-            {project.stack.map((tool) => (
-              <li key={tool}>{tool}</li>
-            ))}
-          </ul>
-          <div className="project-actions">
-            {project.github && (
-              <a
-                className="text-link"
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub / Source <span aria-hidden="true">↗</span>
-                <span className="sr-only">
-                  {" "}
-                  for {project.name} (opens in a new tab)
-                </span>
-              </a>
-            )}
-            {project.live && (
-              <a
-                className="text-link"
-                href={project.live}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live project ↗
-              </a>
-            )}
-          </div>
+      <div className="project-description">
+        <p>{project.description}</p>
+        <ul className="technology-list" aria-label="Technologies">
+          {project.stack.map((tool) => (
+            <li key={tool}>{tool}</li>
+          ))}
+        </ul>
+        <div className="project-actions">
+          {project.live && (
+            <InteractiveHoverButton text="Live project" icon="↗" href={project.live} target="_blank" rel="noreferrer">
+              <span className="sr-only"> for {project.name} (opens in a new tab)</span>
+            </InteractiveHoverButton>
+          )}
+          {project.github && (
+            <InteractiveHoverButton
+              text="GitHub / Source"
+              icon="↗"
+              variant="secondary"
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="sr-only"> for {project.name} (opens in a new tab)</span>
+            </InteractiveHoverButton>
+          )}
         </div>
       </div>
       <p className="project-takeaway">
@@ -183,6 +160,6 @@ export function ProjectFeature({
           ))}
         </div>
       </details>
-    </article>
+    </div>
   );
 }

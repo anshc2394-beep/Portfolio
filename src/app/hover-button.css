@@ -1,0 +1,115 @@
+/* Interactive hover button: a dot that expands to fill the pill while the label slides
+   out and a copy with an arrow slides in. Geometry and 300ms timing follow the reference. */
+.hover-button {
+  --button-fill: var(--accent-primary);
+  --button-on-fill: var(--on-accent);
+  --button-edge: var(--accent-primary);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px 0 38px;
+  overflow: hidden;
+  border: 1px solid var(--button-edge);
+  border-radius: 999px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--display);
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.hover-button--secondary {
+  --button-fill: var(--accent-secondary);
+  --button-on-fill: var(--on-secondary);
+  --button-edge: var(--border-accent);
+}
+.hover-button-label {
+  display: inline-block;
+  transform: translateX(4px);
+  transition: all 300ms;
+}
+.hover-button-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--button-on-fill);
+  opacity: 0;
+  transform: translateX(48px);
+  transition: all 300ms;
+}
+.hover-button-dot {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 20px;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: var(--button-fill);
+  transition: all 300ms;
+}
+.hover-button:is(:focus-visible, :active) {
+  color: var(--foreground);
+}
+.hover-button:is(:focus-visible, :active) .hover-button-label {
+  opacity: 0;
+  transform: translateX(48px);
+}
+.hover-button:is(:focus-visible, :active) .hover-button-reveal {
+  opacity: 1;
+  transform: translateX(-4px);
+}
+.hover-button:is(:focus-visible, :active) .hover-button-dot {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.8);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-button:hover {
+    color: var(--foreground);
+  }
+  .hover-button:hover .hover-button-label {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  .hover-button:hover .hover-button-reveal {
+    opacity: 1;
+    transform: translateX(-4px);
+  }
+  .hover-button:hover .hover-button-dot {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.8);
+  }
+}
+
+/* The navigation and contact rows draw an underline on links; the fill replaces it here. */
+.navigation > .hover-button {
+  padding: 0 20px 0 34px;
+  font-size: 14px;
+}
+.navigation > .hover-button::after,
+.contact-links .hover-button::after {
+  content: none;
+}
+.navigation > .hover-button .hover-button-dot {
+  left: 16px;
+}
+.hero-actions,
+.project-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.contact-links > div {
+  flex-wrap: wrap;
+  gap: 12px;
+}

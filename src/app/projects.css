@@ -1,0 +1,237 @@
+/* Project index: a full-bleed obsidian stage with a scrambling list over dynamic imagery. */
+.projects-intro {
+  padding-bottom: 48px;
+}
+.projects-intro .section-heading {
+  margin-bottom: 0;
+}
+.project-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  min-height: min(100vh, 860px);
+  padding: 28px var(--gutter);
+  border-block: 1px solid var(--border-subtle);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.stage-layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+/* Keeps bright screenshots behind the list from competing with the row text. */
+.stage-layers::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--obsidian-900) 92%, transparent) 35%,
+    color-mix(in srgb, var(--obsidian-900) 45%, transparent)
+  );
+}
+/* Exit fades first, then resets the scale, so each entrance starts from 1.2 again. */
+.stage-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-position: center top;
+  background-size: cover;
+  transform: scale(1.2);
+  transition:
+    opacity 0.6s ease,
+    transform 0s linear 0.6s;
+}
+.stage-layer.is-visible {
+  opacity: 0.5;
+  transform: scale(1);
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.stage-poster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-inline: var(--gutter);
+  color: var(--accent-secondary);
+  font-family: var(--display);
+  font-size: clamp(64px, 10vw, 168px);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+.stage-poster.is-visible {
+  opacity: 0.3;
+}
+
+.stage-corners {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--foreground-secondary);
+  font: 12px/1.6 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.stage-square {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-primary);
+}
+.stage-links {
+  display: flex;
+  gap: 8px;
+}
+.stage-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 6px;
+  color: var(--accent-secondary);
+}
+.stage-links a:hover {
+  color: var(--accent-secondary-hover);
+}
+.time-blink {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.project-list {
+  position: relative;
+  border-top: 1px solid var(--border-strong);
+}
+.project-row {
+  border-bottom: 1px solid var(--border-strong);
+}
+.project-row > details > summary {
+  display: block;
+  padding: 22px 0;
+  list-style: none;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+.project-row > details > summary::-webkit-details-marker {
+  display: none;
+}
+.project-list.has-active .project-row:not(.is-active) > details > summary {
+  opacity: 0.55;
+}
+.project-row-heading {
+  font: inherit;
+}
+.project-row-data {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1.7fr 0.8fr 24px;
+  align-items: baseline;
+  gap: 24px;
+}
+.project-row-data > span {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--accent-secondary);
+  font: 12px/1.6 var(--mono);
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.project-row-data > .project-row-title {
+  color: var(--foreground);
+  font-family: var(--display);
+  font-size: clamp(24px, 2.7vw, 38px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  text-transform: none;
+  transition: color 0.25s ease;
+}
+.project-row.is-active .project-row-title {
+  color: var(--accent-primary);
+}
+.project-row-data > .project-row-year {
+  color: var(--foreground-secondary);
+}
+.project-row-data > .project-row-toggle {
+  overflow: visible;
+  color: var(--accent-primary);
+  font-size: 22px;
+  line-height: 1;
+  text-align: right;
+  transition: transform var(--motion-fast) var(--ease-editorial);
+}
+details[open] > summary .project-row-toggle {
+  transform: rotate(45deg);
+}
+
+.project-panel {
+  position: relative;
+  padding: 8px 0 36px;
+  background: var(--background);
+}
+.project-panel .project-description {
+  margin-top: 28px;
+}
+.project-panel .project-description > p {
+  max-width: 720px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  details[open] > .project-panel {
+    animation: detail-arrive var(--motion-medium) var(--ease-editorial) backwards;
+  }
+}
+
+/* Touch screens get the imagery inside each opened panel instead of behind the list. */
+@media (hover: none), (max-width: 760px) {
+  .stage-layers {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .projects-intro {
+    padding-bottom: 30px;
+  }
+  .project-stage {
+    gap: 24px;
+    min-height: 0;
+  }
+  .project-row > details > summary {
+    padding: 18px 0;
+  }
+  .project-row-data {
+    grid-template-columns: 1fr 24px;
+    gap: 4px 12px;
+  }
+  .project-row-data > .project-row-title {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 28px;
+  }
+  .project-row-data > .project-row-toggle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .project-row-data > .project-row-category,
+  .project-row-data > .project-row-year {
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+  .project-row-data > .project-row-stack {
+    display: none;
+  }
+  .stage-corners {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+}

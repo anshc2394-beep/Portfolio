@@ -36,6 +36,7 @@
   --accent-primary-hover: var(--blaze-800);
   --accent-primary-deep: var(--blaze-800);
   --on-accent: #ffffff;
+  --on-secondary: #ffffff;
   --accent-secondary: var(--glacier-700);
   --accent-secondary-hover: var(--glacier-800);
   --accent-secondary-muted: var(--glacier-500);
@@ -54,7 +55,9 @@
   color-scheme: light;
 }
 
-html[data-theme="dark"] {
+/* The project stage is obsidian in both themes, so it takes the dark tokens directly. */
+html[data-theme="dark"],
+.project-stage {
   --background: var(--obsidian-900);
   --background-deep: var(--obsidian-950);
   --surface: var(--obsidian-850);
@@ -67,6 +70,7 @@ html[data-theme="dark"] {
   --accent-primary-hover: var(--blaze-300);
   --accent-primary-deep: var(--blaze-600);
   --on-accent: var(--obsidian-950);
+  --on-secondary: var(--obsidian-950);
   --accent-secondary: var(--glacier-300);
   --accent-secondary-hover: var(--glacier-200);
   --accent-secondary-muted: var(--glacier-500);
@@ -143,52 +147,29 @@ footer {
   color: var(--foreground);
 }
 
-.button {
-  box-shadow: 0 10px 24px -16px var(--accent-primary);
-}
-.button:active {
-  background: var(--accent-primary-deep);
-  border-color: var(--accent-primary-deep);
-}
 .status-dot {
   box-shadow: 0 0 0 3px var(--glow-orange);
 }
-.text-link:hover,
-.contact-links > div > a:hover,
 .project-details summary:hover,
-.resume-nav:hover,
 .theme-toggle:hover {
   color: var(--accent-secondary-hover);
 }
 .menu-toggle:hover {
   color: var(--accent-primary);
 }
-.resume-nav {
-  transition:
-    color 0.18s ease,
-    border-color 0.18s ease,
-    box-shadow 0.18s ease;
-}
 .project-details summary {
   transition: color 0.18s ease;
 }
 /* The transitions above would otherwise replace the 400ms theme-switch fade. */
-.theme-changing :is(.project-visual, .resume-nav, .project-details summary) {
+.theme-changing :is(.project-visual, .project-details summary) {
   transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .button:hover {
-    box-shadow: 0 12px 30px -10px var(--glow-orange), 0 10px 26px -14px var(--accent-primary-hover);
-  }
   .project-visual:hover {
     box-shadow:
       inset 0 0 0 1px var(--card-edge),
       inset 0 1px 0 var(--edge-highlight),
       0 26px 70px -30px var(--card-glow);
-  }
-  .navigation .resume-nav:hover {
-    border-color: var(--accent-secondary-muted);
-    box-shadow: 0 0 18px -6px var(--glow-blue);
   }
 }
